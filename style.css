@@ -9,13 +9,24 @@
 }
 
 body {
-    background: #000;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    flex-direction: column;
     min-height: 100vh;
     padding: 20px;
+    overflow: hidden;
+
+    /* Fundo animado */
+    background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #0f2027);
+    background-size: 400% 400%;
+    animation: gradientAnimation 15s ease infinite;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 img {
@@ -83,6 +94,30 @@ button:active {
     color: #fff;
     text-align: center;
 }
+/* Botão: animação ao clicar */
+button:active {
+    transform: scale(0.97);
+    transition: transform 0.1s ease;
+}
+
+/* Resultado: animação de fade/pop */
+.result {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Classe que será adicionada quando houver sorteio */
+.result.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
 
 /* Celulares */
 @media (max-width: 500px) {
